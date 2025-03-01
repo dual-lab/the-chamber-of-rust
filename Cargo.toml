@@ -1,0 +1,13 @@
+[workspace]
+members = [
+    "rustlearning"
+]
+resolver = "2"
+
+[workspace.package]
+authors = ["dmike16"]
+homepage = "https://github.com/dual-lab/the-chamber-of-rust"
+repository = "https://github.com/dual-lab/the-chamber-of-rust"
+license = "MIT"
+readme = "README"
+

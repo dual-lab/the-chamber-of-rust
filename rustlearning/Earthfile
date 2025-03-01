@@ -1,0 +1,14 @@
+VERSION --global-cache 0.8
+
+IMPORT github.com/earthly/lib/rust:3.0.3 AS rust
+IMPORT github.com/dual-lab/the-chamber-of-rust/script:main as script
+
+source:
+    FROM script+install
+    COPY --keep-ts Cargo.toml Cargo.lock ./
+    COPY --keep-ts --dir src ./
+
+build:
+    FROM +source
+    DO rust+CARGO --arg="build --release" --output="release/[^/\.]+"
+    SAVE ARTIFACT ./target/release/* AS LOCAL target/*
