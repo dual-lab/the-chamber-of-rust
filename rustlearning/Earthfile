@@ -1,7 +1,7 @@
 VERSION --global-cache 0.8
 
 IMPORT github.com/earthly/lib/rust:3.0.3 AS rust
-IMPORT github.com/dual-lab/the-chamber-of-rust/script:main as script
+IMPORT github.com/dual-lab/the-chamber-of-rust/script as script
 
 source:
     FROM script+install
