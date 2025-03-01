@@ -1,14 +1,16 @@
 VERSION --global-cache 0.8
 
 IMPORT github.com/earthly/lib/rust:3.0.3 AS rust
-IMPORT github.com/dual-lab/the-chamber-of-rust/script as script
+IMPORT ../ AS root
 
 source:
-    FROM script+install
-    COPY --keep-ts Cargo.toml Cargo.lock ./
-    COPY --keep-ts --dir src ./
+    FROM root+deps
+    COPY --keep-ts root+deps/Cargo.lock ./
+    COPY --keep-ts root+deps/Cargo.toml ./
+    COPY --keep-ts Cargo.toml ./rustlearning/
+    COPY --keep-ts --dir src ./rustlearning/
 
 build:
     FROM +source
-    DO rust+CARGO --arg="build --release" --output="release/[^/\.]+"
-    SAVE ARTIFACT ./target/release/* AS LOCAL target/*
+    DO rust+CARGO --args="build --release -p rustlearning" --output="release/[^/\.]+"
+    SAVE ARTIFACT ./target/release/* AS LOCAL target/
