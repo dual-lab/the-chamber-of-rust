@@ -13,3 +13,9 @@ rand = "0.9.0"
 
 [[bin]]
 name = "guessing-game"
+
+[[bin]]
+name = "fahrenheit-to-celsius"
+
+[[bin]]
+name = "fibonacci-n"
