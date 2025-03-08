@@ -22,3 +22,6 @@ name = "fibonacci-n"
 
 [[bin]]
 name = "collection-ex1"
+
+[[bin]]
+name = "collection-ex2"
