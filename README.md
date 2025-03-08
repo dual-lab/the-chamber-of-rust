@@ -14,7 +14,8 @@
   </a>
   <h6>
     <small>
-       <a href="https://www.flaticon.com/free-icons/serpent" title="serpent icons">Serpent icons created by juicy_fish - Flaticon</a>
+       <a href="https://www.flaticon.com/free-icons/serpent" title="serpent icons">
+                Serpent icons created by juicy_fish - Flaticon</a>
     </small>
   </h6>
 

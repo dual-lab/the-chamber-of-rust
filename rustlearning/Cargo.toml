@@ -19,3 +19,6 @@ name = "fahrenheit-to-celsius"
 
 [[bin]]
 name = "fibonacci-n"
+
+[[bin]]
+name = "collection-ex1"
