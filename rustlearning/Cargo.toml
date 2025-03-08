@@ -25,3 +25,6 @@ name = "collection-ex1"
 
 [[bin]]
 name = "collection-ex2"
+
+[[bin]]
+name = "collection-ex3"
