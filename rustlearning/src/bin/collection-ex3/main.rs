@@ -1,5 +1,6 @@
 use std::collections::HashMap;
 
+use rustlearning::data::InMemoryHashMapStorage;
 use rustlearning::input;
 
 fn main() {
@@ -8,7 +9,8 @@ fn main() {
 }
 
 fn internal_loop() {
-    let mut database: HashMap<String, Vec<String>> = HashMap::new();
+    let mut database: InMemoryHashMapStorage<String, String> =
+        InMemoryHashMapStorage::from(HashMap::new());
     loop {
         print_instruction();
         let cmd = input::line("Select one");
@@ -22,19 +24,17 @@ fn internal_loop() {
     }
 }
 
-fn add_to_department(database: &mut HashMap<String, Vec<String>>) {
+fn add_to_department(database: &mut InMemoryHashMapStorage<String, String>) {
     let department = input::line("Insert the department");
     let employe = input::line("Insert employe name");
 
-    database
-        .entry(department)
-        .or_insert(Vec::new())
-        .push(employe);
+    database.save(department, employe);
 }
 
-fn find_by_department(database: &HashMap<String, Vec<String>>) {
+
+fn find_by_department(database: &InMemoryHashMapStorage<String, String>) {
     let department = input::line("Insert a department");
-    match database.get(&department) {
+    match database.select(&department) {
         Some(e) => {
             for name in e {
                 println!("{name}")
