@@ -7,9 +7,7 @@ use rustlearning::minigrep::Config;
 ///      Usage: mingrep <string-to-serach> <path-to-file> <-i>
 ///
 fn main() {
-    let args: Vec<String> = env::args().collect(); // read commands line argument
-
-    let config = Config::build(&args).unwrap_or_else(|err| {
+    let config = Config::build(env::args()).unwrap_or_else(|err| {
         eprintln!("Programm exit with error: {err}");
         process::exit(1);
     });

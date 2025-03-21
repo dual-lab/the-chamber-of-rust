@@ -48,16 +48,22 @@ pub struct Config {
 }
 
 impl Config {
-    pub fn build(args: &[String]) -> Result<Config, &'static str> {
-        if args.len() < 3 {
-            return Err("Not enough arguments");
-        }
-        let query = args[1].clone();
-        let file_path = args[2].clone();
+    pub fn build(mut args: impl Iterator<Item = String>) -> Result<Config, &'static str> {
+        args.next();
+
+        let query = match args.next(){
+            Some(t) => t,
+            None => return Err("Search term missing"),
+        };
+
+        let file_path = match args.next() {
+            Some(t) => t,
+            None => return Err("File path missing"),
+        };
         let ignore_case = args
-            .get(3)
-            .filter(|a| *a == "-i")
-            .or(env::var("IGNORE_CASE").ok().as_ref())
+            .next()
+            .filter(|a| a == "-i")
+            .or(env::var("IGNORE_CASE").ok())
             .is_some();
 
         Ok(Config {
