@@ -28,3 +28,6 @@ name = "collection-ex2"
 
 [[bin]]
 name = "collection-ex3"
+
+[[bin]]
+name = "minigrep"
